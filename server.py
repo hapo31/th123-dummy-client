@@ -12,6 +12,8 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 sock.bind((host, port))
 
-while True:
-    data, _ = sock.recvfrom(1024)
-    print (data.hex())
+# while True:
+data, addr = sock.recvfrom(1024)
+print (data.hex())
+res = 3
+sock.sendto(res.to_bytes(1, byteorder="little"), addr)
