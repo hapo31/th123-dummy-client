@@ -1,4 +1,5 @@
 import sys
+import json
 from struct import Struct
 import random
 
@@ -25,12 +26,28 @@ class th123_packet():
         return data
 
     def _get_sendcount(self, sendcount):
-        if sendcount % 5 < 3:
+        if sendcount % 5 < 2:
             return 0
         if sendcount % 5 < 4:
-            return int(sendcount * 7)
+            return int(sendcount / 5)
 
-        return int(self._rand + sendcount * 7)
+        return int(self._rand + sendcount / 5)
 
     def end(self):
         return self._sendcount >= 170
+
+
+class th123_imitation_packet():
+    def __init__(self):
+        with open("sample.json", "r") as f:
+            self._buffers = json.load(f)
+            print(len(self._buffers))
+            self._count = 0
+
+    def next(self):
+        data = self._buffers[self._count]
+        self._count += 1
+        return data
+
+    def end(self):
+        return len(self._buffers) >= self._count
