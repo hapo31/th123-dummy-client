@@ -3,6 +3,8 @@ import sys
 from time import sleep
 
 from bytestructure import th123_packet
+from bytestructure import th123_imitation_packet
+
 
 
 host = sys.argv[1] if len(sys.argv) >= 2 else '127.0.0.1'
@@ -16,8 +18,8 @@ print("send to :%d" % port)
 
 while not packet.end():
     data = packet.next()
-    print (data)
-    sock.sendto(packet.next(), (host, port))
+    print (data.hex())
+    sock.sendto(data, (host, port))
+    rdata, _ = sock.recvfrom(1024)
+    print (rdata.hex())
     sleep(1/60)
-    # data, _ = sock.recvfrom(1024)
-    # print (data.hex())
