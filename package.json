@@ -1,0 +1,20 @@
+{
+  "name": "th123echo",
+  "version": "1.0.0",
+  "description": "天則のクライアントに偽装して、接続を待ち受けているサーバーに接続リクエストパケットを送るスクリプトです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happou31/th123-dummy-client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/happou31/th123-dummy-client/issues"
+  },
+  "homepage": "https://github.com/happou31/th123-dummy-client#readme"
+}
